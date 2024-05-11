@@ -5,10 +5,13 @@ const fastify = require('fastify')(
 )
 const cors = require('@fastify/cors');
 require('dotenv').config()
+const path = require('node:path');
 
 fastify.register(cors, {
     origin: "*"
 })
+
+fastify.register(require('./routes/process.routes') , {prefix: 'api'})
 
 fastify.listen({ port: process.env.APP_PORT || 3000, host: process.env.APP_HOST }, (err) => {
     if (err) {
