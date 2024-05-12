@@ -14,7 +14,7 @@ Follow these simple steps to get PenguHTML up and running on your local machine:
 
 2. Install backend dependencies:
    ```bash
-   npm i
+   npm install
 
 3. Run the API server:
    ```bash
@@ -26,7 +26,7 @@ Follow these simple steps to get PenguHTML up and running on your local machine:
 
 5. Install frontend dependencies:
    ```bash
-   npm
+   npm install
 
 4. Run the frontend development server:
    ```bash
