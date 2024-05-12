@@ -1,12 +1,17 @@
 <script>
 import { BASE_URL } from '../conts';
 import axios from "axios";
+import Preview from './Preview.vue'
+
+
 export default {
+    components: { Preview },
     data() {
         return {
             imageUploaded: false,
             loading: false,
             message: '',
+            responseData: null,
         };
     },
     methods: {
@@ -27,9 +32,9 @@ export default {
                 formData.append('message', this.message);
 
                 const response = await axios.post(`${BASE_URL}api/generate`, formData);
-
                 console.log(response.data);
 
+                this.responseData = response.data.data;
                 this.message = '';
                 this.imageUploaded = false;
                 this.loading = false;
@@ -50,7 +55,10 @@ export default {
             <div class="flex flex-col h-full overflow-x-auto mb-4">
                 <div class="flex flex-col h-full">
                     <div class="grid grid-cols-12 gap-y-2">
-                        <div v-if="!loading" class="col-span-12 flex justify-center items-center h-full mt-44">
+                        <div v-if="responseData" class="col-span-12 flex justify-center items-center h-full mt-4">
+                            <Preview :htmlData="responseData"></Preview>
+                        </div>
+                        <div v-else-if="!loading" class="col-span-12 flex justify-center items-center h-full mt-44">
                             <label for="file-upload"
                                 class="flex items-center justify-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white cursor-pointer shadow-md">
                                 <i class="fa-solid fa-cloud-arrow-up mr-2"></i>

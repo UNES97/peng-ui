@@ -28,11 +28,11 @@
                     </g>
                 </svg>
             </div>
-            <div class="ml-2 font-bold text-2xl">AI/UI</div>
+            <div class="ml-2 font-bold text-2xl">PengUI</div>
         </div>
         <div class="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg">
             <div class="h-20 w-20 rounded-full border overflow-hidden">
-                <img src="https://i1.sndcdn.com/avatars-000186203342-ebhles-t500x500.jpg" alt="Avatar"
+                <img src="/images/profile.avif" alt="Avatar"
                     class="h-full w-full" />
             </div>
             <div class="text-sm font-semibold mt-2">By YATO KAMI</div>
