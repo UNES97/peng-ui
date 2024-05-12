@@ -1,5 +1,5 @@
 <template>
-    <div v-html="htmlData" class="page-content"></div>
+    <iframe :srcdoc="htmlData" frameborder="0" width="100%" height="100%" class="h-screen"></iframe>
 </template>
 
 <script>
@@ -14,11 +14,6 @@ export default {
 </script>
 
 
-<style scoped>
-.page-content {
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 20px;
-}
+<style >
+
 </style>

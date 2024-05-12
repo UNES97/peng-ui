@@ -43,6 +43,21 @@ export default {
                 console.error('Error:', error);
                 this.loading = false;
             }
+        },
+        copyHtmlCode() {
+            const textarea = document.createElement('textarea');
+            textarea.value = this.responseData;
+
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.opacity = '0';
+
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('HTML code copied to clipboard!');
         }
     }
 }
@@ -55,12 +70,12 @@ export default {
             <div class="flex flex-col h-full overflow-x-auto mb-4">
                 <div class="flex flex-col h-full">
                     <div class="grid grid-cols-12 gap-y-2">
-                        <div v-if="responseData" class="col-span-12 flex justify-center items-center h-full mt-4">
+                        <div v-if="responseData" class="col-span-12 flex justify-center items-center">
                             <Preview :htmlData="responseData"></Preview>
                         </div>
                         <div v-else-if="!loading" class="col-span-12 flex justify-center items-center h-full mt-44">
                             <label for="file-upload"
-                                class="flex items-center justify-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white cursor-pointer shadow-md">
+                                class="flex items-center justify-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white cursor-pointer shadow-md" :class="imageUploaded ? 'disabled' : ''">
                                 <i class="fa-solid fa-cloud-arrow-up mr-2"></i>
                                 <span>Upload a Screenshot of UI</span>
                             </label>
@@ -77,21 +92,15 @@ export default {
                     <div class="relative w-full">
                         <input type="text"
                             class="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10" v-model="message"/>
-                        <button
-                            class="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                </path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
                 <div class="ml-4">
-                    <button class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0" :class="!imageUploaded || loading ? 'disabled' : ''" @click="sendData">
+                    <button class="items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0" :class="!imageUploaded || loading ? 'disabled' : ''" @click="sendData">
                         <span v-if="!loading">Send<i class="fa-regular fa-paper-plane ml-2"></i></span>
                         <span v-else>Loading<i class="fa-solid fa-cog fa-spin ml-2"></i></span>
+                    </button>
+                    <button v-if="responseData" class="items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0 ml-2" @click="copyHtmlCode">
+                        <span><i class="fa-solid fa-code"></i></span>
                     </button>
                 </div>
             </div>

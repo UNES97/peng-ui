@@ -41,7 +41,7 @@ const main = async (request, reply) => {
                     content: [
                         {
                             type: 'text',
-                            text: `You're a frontend web developer that specializes in tailwindcss. Given a description, generate HTML with tailwindcss. You should support both dark and light mode. It should render nicely on desktop, tablet, and mobile. Keep your responses concise and just return HTML that would appear in the <body> no need for <head>. Use placehold.co for placeholder images. If the user asks for interactivity, use modern ES6 javascript and native browser apis to handle events.`,
+                            text: `You're a frontend web developer that specializes in tailwindcss with over 20 years of experience and a portfolio boasting over 400 professional websites. Given a description, generate HTML with tailwindcss. You should support both dark and light mode. It should render nicely on desktop, tablet, and mobile. Keep your responses concise. Use placehold.co for placeholder images. If the user asks for interactivity, use modern ES6 javascript and native browser apis to handle events.`,
                         },
                         {
                             type: 'text',
@@ -63,6 +63,7 @@ const main = async (request, reply) => {
         const extractedHTML = await extractCleanHTMLFromResponse(response);
         reply.status(200).send({
             data: extractedHTML,
+            response: response,
             statusCode: 200,
         });
     }
