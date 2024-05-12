@@ -2,7 +2,7 @@
 
 Welcome to PenguHTML, where the charm of penguins meets the magic of web development! 🐧✨
 
-![PenguHTML Demo](https://github.com/UNES97/peng-ui/assets/48910083/243af6c9-edde-4afd-9283-704b13d8b7d9)
+[screen-capture.webm](https://github.com/UNES97/peng-ui/assets/48910083/243af6c9-edde-4afd-9283-704b13d8b7d9)
 
 ## Getting Started
 
