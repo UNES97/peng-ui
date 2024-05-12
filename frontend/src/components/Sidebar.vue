@@ -30,14 +30,14 @@
             </div>
             <div class="ml-2 font-bold text-2xl">PengUI</div>
         </div>
-        <div class="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg">
+        <!-- <div class="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg">
             <div class="h-20 w-20 rounded-full border overflow-hidden">
                 <img src="/images/profile.avif" alt="Avatar"
                     class="h-full w-full" />
             </div>
             <div class="text-sm font-semibold mt-2">By YATO KAMI</div>
             <div class="text-xs text-gray-500">Software Engineer</div>
-        </div>
+        </div> -->
         <div class="flex flex-col mt-8">
             <div class="flex flex-row items-center justify-between text-xs">
                 <span class="font-bold">Conversations History</span>

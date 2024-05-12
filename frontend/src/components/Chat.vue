@@ -12,6 +12,7 @@ export default {
             loading: false,
             message: '',
             responseData: null,
+            selectedFramework: 'tailwind',
         };
     },
     methods: {
@@ -30,6 +31,7 @@ export default {
                 const formData = new FormData();
                 formData.append('image', document.getElementById('file-upload').files[0]);
                 formData.append('message', this.message);
+                formData.append('framework', this.selectedFramework);
 
                 const response = await axios.post(`${BASE_URL}api/generate`, formData);
                 console.log(response.data);
@@ -73,16 +75,34 @@ export default {
                         <div v-if="responseData" class="col-span-12 flex justify-center items-center">
                             <Preview :htmlData="responseData"></Preview>
                         </div>
-                        <div v-else-if="!loading" class="col-span-12 flex justify-center items-center h-full mt-44">
-                            <label for="file-upload"
-                                class="flex items-center justify-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white cursor-pointer shadow-md" :class="imageUploaded ? 'disabled' : ''">
+                        <div v-else-if="!loading" class="col-span-12 flex flex-col justify-center items-center h-full mt-40">
+                            <label for="file-upload" class="flex items-center justify-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white cursor-pointer shadow-md" :class="imageUploaded ? 'disabled' : ''">
                                 <i class="fa-solid fa-cloud-arrow-up mr-2"></i>
                                 <span>Upload a Screenshot of UI</span>
                             </label>
                             <input id="file-upload" type="file" class="hidden" @change="handleFileUpload"/>
-                        </div>   
+                            
+                            <!-- Checkboxes -->
+                            <label class="text-gray-700 mt-10">Select the framework for styling:</label>
+                            <div class="flex justify-center items-center">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" class="form-radio text-indigo-600 h-5 w-5" name="framework" v-model="selectedFramework" value="tailwind">
+                                    <span class="text-gray-700">Tailwind</span>
+                                </label>
+                                <label class="flex items-center space-x-2 ml-4">
+                                    <input type="radio" class="form-radio text-indigo-600 h-5 w-5" name="framework" v-model="selectedFramework" value="bootstrap">
+                                    <span class="text-gray-700">Bootstrap</span>
+                                </label>
+                                <label class="flex items-center space-x-2 ml-4">
+                                    <input type="radio" class="form-radio text-indigo-600 h-5 w-5" name="framework" v-model="selectedFramework" value="bulma">
+                                    <span class="text-gray-700">Bulma</span>
+                                </label>
+                            </div>
+                            <!-- End of Checkboxes -->
+                        </div>
+                           
                         <div v-else class="col-span-12 flex items-center justify-center h-full">
-                            <img class="flex items-center justify-center w-80" src="/images/loading.gif" alt="Loading">
+                            <img class="flex items-center justify-center w-80" src="/images/coding.gif" alt="Loading">
                         </div>
                     </div>
                 </div>
